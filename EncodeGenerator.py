@@ -4,13 +4,21 @@ import os
 import face_recognition
 import firebase_admin
 from firebase_admin import credentials
-from firebase_admin import db
-from firebase_admin import storage
+from firebase_admin import db, storage
+from dotenv import load_dotenv
 
-cred = credentials.Certificate("serviceAccountKey.json")
+# Load environment variables from .env file
+load_dotenv()
+
+# Get values from the .env file
+firebase_db_url = os.getenv("FIREBASE_DATABASE_URL")
+firebase_storage_bucket = os.getenv("FIREBASE_STORAGE_BUCKET")
+firebase_credentials_path = os.getenv("FIREBASE_CREDENTIALS")
+
+cred = credentials.Certificate(firebase_credentials_path)
 firebase_admin.initialize_app(cred, {
-    'databaseURL': "https://face-attendance-real-tim-4a64a-default-rtdb.firebaseio.com/",
-    'storageBucket': "face-attendance-real-tim-4a64a.appspot.com"
+    'databaseURL': firebase_db_url,
+    'storageBucket': firebase_storage_bucket
  }
 )
 
