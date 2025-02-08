@@ -101,7 +101,7 @@ data = {
         "id": "Z8",
         "name": "Ryan Roslansky",
         "company": "Linkdin",
-        "Joining year": 2020,
+        "Joined year": 2020,
         "total attendance": 0,
         "nationality": "American",
         "gender": "female",
